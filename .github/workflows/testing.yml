@@ -27,4 +27,9 @@ jobs:
         run: curl -o- 'https://s3.amazonaws.com/bat-wrapper/install.sh' | bash && echo Integration Testing Complete
         
       - name: Running Integration Tests
-        run: bat  ./src/test/resources/integration/bat.dwl
+        run: bat ./src/test/resources/integration/bat.dwl
+
+      - name: Performance Testing
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: ./src/test/resources/performance/test.js
